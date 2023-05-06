@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">KANBAN BOARD</h1>
+    </div>
+
+    <div class="row">
+        <div class="col lg-4">
+            <h3>TO DO</h3>
+            
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let todo of todos" cdkDrag>{{ todo }}</div>
+            </div>
+
+        </div>
+
+        <div class="col lg-4">
+            <h3>ONGOING</h3>
+            
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let ongoing of ongoings" cdkDrag>{{ ongoing }}</div>
+            </div>
+
+        </div>
+
+        <div class="col lg-4">
+            <h3>DONE</h3>
+            
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let done of dones" cdkDrag>{{ done }}</div>
+            </div>
+
+        </div>
+    </div>
+    
+      
+
+</div>

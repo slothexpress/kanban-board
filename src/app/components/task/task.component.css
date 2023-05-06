@@ -14,6 +14,7 @@ h1, h3 {
     background: white;
     opacity: 80%;
     overflow: hidden;
+    margin-bottom: 25vh;
   }
   
   .example-box {

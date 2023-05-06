@@ -4,6 +4,15 @@
     </div>
 
     <div class="row">
+        <input type="text" 
+        id="inputTodo"
+        class="form-control form-control-lg text-center"
+        [(ngModel)]="newTodo"
+        (keyup.enter)="addTodo()"
+        placeholder=". . .">
+    </div>
+
+    <div class="row">
         <div class="col lg-4">
             <h3>TO DO</h3>
             

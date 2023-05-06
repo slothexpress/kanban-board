@@ -8,13 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
 
-  todos: string[] = ["Älska", "Skratta", "Dansa", "Städa"];
+  todos: string[] = [];
   ongoings: string[] = []
   dones: string[] = []
+
+  newTodo!: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementById("inputTodo")?.focus();
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -28,6 +31,11 @@ export class TaskComponent implements OnInit {
         event.currentIndex,
       );
     }
+  }
+
+  addTodo() {
+    this.todos.push(this.newTodo);
+    this.newTodo = "";
   }
 
 }

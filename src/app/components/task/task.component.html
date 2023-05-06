@@ -7,7 +7,12 @@
         <div class="col lg-4">
             <h3>TO DO</h3>
             
-            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <div cdkDropList 
+            class="example-list" 
+            id="list-todo" 
+            [cdkDropListData]="todos" 
+            [cdkDropListConnectedTo]="['list-ongoing']"
+            (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let todo of todos" cdkDrag>{{ todo }}</div>
             </div>
 
@@ -16,7 +21,12 @@
         <div class="col lg-4">
             <h3>ONGOING</h3>
             
-            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <div cdkDropList 
+            class="example-list" 
+            id="list-ongoing" 
+            [cdkDropListData]="ongoings" 
+            [cdkDropListConnectedTo]="['list-todo', 'list-done']"
+            (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let ongoing of ongoings" cdkDrag>{{ ongoing }}</div>
             </div>
 
@@ -25,7 +35,12 @@
         <div class="col lg-4">
             <h3>DONE</h3>
             
-            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <div cdkDropList 
+            class="example-list" 
+            id="list-done" 
+            [cdkDropListData]="dones" 
+            [cdkDropListConnectedTo]="['list-ongoing']"
+            (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let done of dones" cdkDrag>{{ done }}</div>
             </div>
 

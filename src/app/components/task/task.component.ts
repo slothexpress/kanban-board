@@ -1,4 +1,4 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
 
-  todos: string[] = ["Älska", "Skratta", "Städa"];
-  ongoings: string[] = ["Leva", "Skratta", "Städa"];
-  dones: string[] = ["Dansa", "Skratta", "Städa"];
+  todos: string[] = ["Älska", "Skratta", "Dansa", "Städa"];
+  ongoings: string[] = []
+  dones: string[] = []
 
   constructor() { }
 
@@ -18,7 +18,16 @@ export class TaskComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
 
 }

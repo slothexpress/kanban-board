@@ -34,8 +34,10 @@ export class TaskComponent implements OnInit {
   }
 
   addTodo() {
-    this.todos.push(this.newTodo);
-    this.newTodo = "";
+    if(this.newTodo) {
+      this.todos.push(this.newTodo);
+      this.newTodo = "";
+    }
   }
 
 }
